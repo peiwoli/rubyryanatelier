@@ -7,7 +7,7 @@
 
 html,
 body {
-  @apply bg-white dark:bg-gray-950;
+  background-color: oklch(71.8% 0.202 349.761);
 
   @media (prefers-color-scheme: dark) {
     color-scheme: dark;

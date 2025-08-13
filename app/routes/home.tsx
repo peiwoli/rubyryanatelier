@@ -1,37 +1,37 @@
 export function meta() {
   return [
-    { title: "BurdaStyle — Sewing Patterns, Magazines, Subscriptions" },
+    { title: "PICKYOU PRO — Used items from models, artists, and creators" },
     {
       name: "description",
       content:
-        "Discover sewing patterns, single issues & books, subscriptions, videos, blog, and more.",
+        "A marketplace where you can get used items from models, artists, and creators.",
     },
   ];
 }
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-pink-50 text-gray-900 dark:bg-pink-950 dark:text-gray-100">
-      <TopNavBurda />
-      <main className="flex flex-col gap-12 md:gap-16">
-        <HeroBanners />
+    <div className="min-h-screen bg-transparent text-gray-900 dark:bg-pink-950 dark:text-gray-100">
+      <TopNavPickyou />
+      <main className="flex flex-col gap-10 md:gap-12">
+        <HeroMarquee />
+        <QuickLinks />
+        <CategoryPills />
 
-        <SectionTitle title="Our Latest Collection" />
-        <ProductGrid products={latestCollectionProducts} />
+        <SectionHeader ja="New Items" en="NEW ITEMS" />
+        <ProductGrid products={sampleNewItems} />
 
-        <OfferCode />
+        <SectionHeader ja="Find Pickers" en="FIND PICKERS" />
+        <PickerGrid pickers={samplePickers} />
 
-        <SectionTitle title="Best-selling Patterns" />
-        <ProductGrid products={bestSellingProducts} />
+        <SectionHeader ja="Snap Items" en="SNAP ITEMS" />
+        <ProductGrid products={sampleSnapItems} />
 
-        <SectionTitle title="Our Blog" subtitle="Latest news and inspiration" />
-        <BlogPreview posts={blogPosts} />
-
-        <ValueProps />
-
-        <NewsletterBurda />
+        <CategoryTiles />
+        <BrandCloud />
+        <Newsletter />
       </main>
-      <FooterBurda />
+      <SiteFooter />
     </div>
   );
 }
@@ -289,16 +289,16 @@ function TopNavPickyou() {
         <nav className="flex h-14 items-center justify-between">
           <a href="/" className="text-lg font-semibold tracking-tight">PICKYOU PRO</a>
           <ul className="hidden items-center gap-6 text-sm text-gray-700 dark:text-gray-300 md:flex">
-            <li><a className="hover:underline" href="#">新着アイテム</a></li>
-            <li><a className="hover:underline" href="#">PICKERを探す</a></li>
-            <li><a className="hover:underline" href="#">SNAPアイテム</a></li>
-            <li><a className="hover:underline" href="#">アイテムカテゴリ</a></li>
-            <li><a className="hover:underline" href="#">ブランドリスト</a></li>
+            <li><a className="hover:underline" href="#">New Items</a></li>
+            <li><a className="hover:underline" href="#">Find Pickers</a></li>
+            <li><a className="hover:underline" href="#">Snap Items</a></li>
+            <li><a className="hover:underline" href="#">Item Categories</a></li>
+            <li><a className="hover:underline" href="#">Brand List</a></li>
           </ul>
           <div className="flex items-center gap-3">
             <button className="rounded-full bg-gray-100 p-2 dark:bg-gray-800" aria-label="Search">🔍</button>
             <button className="rounded-full bg-gray-100 p-2 dark:bg-gray-800" aria-label="Cart">🛒</button>
-            <button className="rounded-full bg-black px-3 py-1 text-white dark:bg-white dark:text-black text-sm">ログイン</button>
+            <button className="rounded-full bg-black px-3 py-1 text-white dark:bg-white dark:text-black text-sm">Log in</button>
           </div>
         </nav>
       </div>
@@ -313,16 +313,16 @@ function HeroMarquee() {
         <div className="grid gap-4 md:grid-cols-2">
           <div className="relative rounded-2xl bg-black p-10 text-white">
             <p className="text-3xl font-semibold leading-tight md:text-4xl">
-              WHAT'S
+              WHAT IS
               <br />
               PICKYOU PRO?
             </p>
             <p className="mt-4 max-w-md text-sm text-gray-300">
-              モデル・アーティスト・クリエイター…PICKERたちのユーズドアイテムが手に入るフリマサービス。
+              A marketplace where you can buy used items from models, artists, and creators.
             </p>
           </div>
           <div className="relative rounded-2xl bg-gray-100 p-10 dark:bg-gray-900">
-            <p className="text-3xl font-semibold leading-tight md:text-4xl">HOT PICKER</p>
+            <p className="text-3xl font-semibold leading-tight md:text-4xl">HOT PICKERS</p>
             <div className="mt-6 grid grid-cols-3 gap-3">
               {samplePickers.slice(0, 6).map((p) => (
                 <div key={p.id} className="aspect-square overflow-hidden rounded-xl">
@@ -339,11 +339,11 @@ function HeroMarquee() {
 
 function QuickLinks() {
   const links = [
-    { ja: "新着アイテム", en: "NEW ITEMS" },
-    { ja: "PICKERを探す", en: "FIND PICKER" },
-    { ja: "SNAPアイテム", en: "SNAP ITEMS" },
-    { ja: "アイテムCATEGORY", en: "ITEM CATEGORY" },
-    { ja: "BRAND リスト", en: "BRAND LIST" },
+    { ja: "New Items", en: "NEW ITEMS" },
+    { ja: "Find Pickers", en: "FIND PICKERS" },
+    { ja: "Snap Items", en: "SNAP ITEMS" },
+    { ja: "Item Category", en: "ITEM CATEGORY" },
+    { ja: "Brand List", en: "BRAND LIST" },
   ];
   return (
     <nav className="mx-auto max-w-7xl px-4">
@@ -363,14 +363,14 @@ function QuickLinks() {
 
 function CategoryPills() {
   const categories = [
-    "アウター",
-    "トップス",
-    "パンツ/オールインワン",
-    "シューズ",
-    "スカート/ワンピース",
-    "バッグ",
-    "帽子",
-    "ファッション雑貨",
+    "Outerwear",
+    "Tops",
+    "Pants/All-in-One",
+    "Shoes",
+    "Skirts/Dresses",
+    "Bags",
+    "Hats",
+    "Accessories",
   ];
   return (
     <div className="mx-auto max-w-7xl px-4">
@@ -459,10 +459,10 @@ function PickerGrid({ pickers }: { pickers: Picker[] }) {
 
 function CategoryTiles() {
   const tiles = [
-    { title: "ワンピース", image: "https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?q=80&w=1600&auto=format&fit=crop" },
-    { title: "帽子", image: "https://images.unsplash.com/photo-1483982258113-b72862e6cff6?q=80&w=1600&auto=format&fit=crop" },
-    { title: "スニーカー", image: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?q=80&w=1600&auto=format&fit=crop" },
-    { title: "バッグ", image: "https://images.unsplash.com/photo-1547949003-9792a18a2601?q=80&w=1600&auto=format&fit=crop" },
+    { title: "Dresses", image: "https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?q=80&w=1600&auto=format&fit=crop" },
+    { title: "Hats", image: "https://images.unsplash.com/photo-1483982258113-b72862e6cff6?q=80&w=1600&auto=format&fit=crop" },
+    { title: "Sneakers", image: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?q=80&w=1600&auto=format&fit=crop" },
+    { title: "Bags", image: "https://images.unsplash.com/photo-1547949003-9792a18a2601?q=80&w=1600&auto=format&fit=crop" },
   ];
   return (
     <section className="mx-auto max-w-7xl px-4">
@@ -509,16 +509,16 @@ function Newsletter() {
   return (
     <section className="mx-auto max-w-7xl px-4 py-10">
       <div className="rounded-2xl border border-gray-200 p-6 dark:border-gray-800 md:p-10">
-        <h3 className="text-lg font-semibold">登録でクーポン & 最新情報をお届け</h3>
-        <p className="mt-1 text-sm text-gray-600 dark:text-gray-400">ニュースレター</p>
+        <h3 className="text-lg font-semibold">Subscribe to our newsletter</h3>
+        <p className="mt-1 text-sm text-gray-600 dark:text-gray-400">Get coupons and the latest updates</p>
         <form className="mt-4 flex flex-col gap-3 sm:flex-row">
           <input
             type="email"
-            placeholder="メールアドレス"
+            placeholder="Email address"
             className="flex-1 rounded-xl border border-gray-300 bg-white px-4 py-3 text-sm outline-none ring-0 placeholder:text-gray-400 focus:border-gray-400 dark:border-gray-700 dark:bg-gray-900"
           />
           <button type="submit" className="rounded-xl bg-black px-5 py-3 text-sm font-semibold text-white dark:bg-white dark:text-black">
-            登録する
+            Subscribe
           </button>
         </form>
       </div>
@@ -528,12 +528,12 @@ function Newsletter() {
 
 function SiteFooter() {
   const links = [
-    "PICKYOU PROとは",
-    "よくあるご質問",
-    "利用規約",
-    "プライバシーポリシー",
-    "特定商取引法に基づく表記",
-    "お問い合わせ",
+    "About PICKYOU PRO",
+    "FAQ",
+    "Terms of Use",
+    "Privacy Policy",
+    "Legal Notice",
+    "Contact",
   ];
   return (
     <footer className="mt-10 border-t border-gray-200 py-10 text-sm dark:border-gray-800">
@@ -556,7 +556,7 @@ const sampleNewItems: Product[] = [
   {
     id: "1",
     brand: "FRAY I.D",
-    title: "ワンピース",
+    title: "Dress",
     price: "¥18,000",
     image: "https://images.unsplash.com/photo-1520975922138-8bdf0a50efba?q=80&w=1600&auto=format&fit=crop",
     soldOut: true,
@@ -564,42 +564,42 @@ const sampleNewItems: Product[] = [
   {
     id: "2",
     brand: "Lee",
-    title: "デニム ワンピース",
+    title: "Denim Dress",
     price: "¥12,000",
     image: "https://images.unsplash.com/photo-1512436991641-6745cdb1723f?q=80&w=1600&auto=format&fit=crop",
   },
   {
     id: "3",
     brand: "KITH",
-    title: "ジップパーカー",
+    title: "Zip Hoodie",
     price: "¥20,000",
     image: "https://images.unsplash.com/photo-1548883354-7622d03aca29?q=80&w=1600&auto=format&fit=crop",
   },
   {
     id: "4",
     brand: "vintage",
-    title: "バケットハット",
+    title: "Bucket Hat",
     price: "¥10,800",
     image: "https://images.unsplash.com/photo-1527708676371-14f669892d02?q=80&w=1600&auto=format&fit=crop",
   },
   {
     id: "5",
     brand: "AMERI",
-    title: "ワンピース",
+    title: "Dress",
     price: "¥22,000",
     image: "https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=1600&auto=format&fit=crop",
   },
   {
     id: "6",
     brand: "NEW ERA",
-    title: "パーカー",
+    title: "Hoodie",
     price: "¥8,200",
     image: "https://images.unsplash.com/photo-1520974735194-6b9f6a7a14a4?q=80&w=1600&auto=format&fit=crop",
   },
   {
     id: "7",
     brand: "NIKE",
-    title: "ハーフジップ",
+    title: "Half-Zip",
     price: "¥12,500",
     image: "https://images.unsplash.com/photo-1542060748-10c28b62716f?q=80&w=1600&auto=format&fit=crop",
     soldOut: true,
@@ -607,7 +607,7 @@ const sampleNewItems: Product[] = [
   {
     id: "8",
     brand: "AURALEE",
-    title: "パーカー",
+    title: "Hoodie",
     price: "¥15,300",
     image: "https://images.unsplash.com/photo-1520975916090-3105956dac38?q=80&w=1600&auto=format&fit=crop",
   },
@@ -617,35 +617,35 @@ const sampleSnapItems: Product[] = [
   {
     id: "s1",
     brand: "A.P.C",
-    title: "デニム",
+    title: "Denim",
     price: "¥22,000",
     image: "https://images.unsplash.com/photo-1512436991641-6745cdb1723f?q=80&w=1600&auto=format&fit=crop",
   },
   {
     id: "s2",
     brand: "LILY BROWN",
-    title: "ウールスカート",
+    title: "Wool Skirt",
     price: "¥8,800",
     image: "https://images.unsplash.com/photo-1603251594619-c1f99fa6a95e?q=80&w=1600&auto=format&fit=crop",
   },
   {
     id: "s3",
     brand: "JACQUEMUS",
-    title: "コート",
+    title: "Coat",
     price: "¥70,000",
     image: "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?q=80&w=1600&auto=format&fit=crop",
   },
   {
     id: "s4",
     brand: "VINTAGE",
-    title: "バンビバッグ",
+    title: "Bambi Bag",
     price: "¥5,000",
     image: "https://images.unsplash.com/photo-1535530903018-f4910febe33e?q=80&w=1600&auto=format&fit=crop",
   },
   {
     id: "s5",
     brand: "Needles",
-    title: "バケットハット",
+    title: "Bucket Hat",
     price: "¥6,800",
     image: "https://images.unsplash.com/photo-1520975922138-8bdf0a50efba?q=80&w=1600&auto=format&fit=crop",
     soldOut: true,
@@ -653,7 +653,7 @@ const sampleSnapItems: Product[] = [
   {
     id: "s6",
     brand: "COMME des GARCONS",
-    title: "スカート",
+    title: "Skirt",
     price: "¥14,000",
     image: "https://images.unsplash.com/photo-1582582621957-dc1b1833e178?q=80&w=1600&auto=format&fit=crop",
   },
@@ -661,11 +661,11 @@ const sampleSnapItems: Product[] = [
 
 const samplePickers: Picker[] = [
   { id: "p1", name: "NANAMI", avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=800&auto=format&fit=crop" },
-  { id: "p2", name: "青柳 文子", avatar: "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=800&auto=format&fit=crop" },
+  { id: "p2", name: "AYAGI Fumiko", avatar: "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=800&auto=format&fit=crop" },
   { id: "p3", name: "SHIHO", avatar: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=800&auto=format&fit=crop" },
-  { id: "p4", name: "渡辺 そら", avatar: "https://images.unsplash.com/photo-1517841905240-472988babdf9?q=80&w=800&auto=format&fit=crop" },
+  { id: "p4", name: "Watanabe Sora", avatar: "https://images.unsplash.com/photo-1517841905240-472988babdf9?q=80&w=800&auto=format&fit=crop" },
   { id: "p5", name: "KARIN", avatar: "https://images.unsplash.com/photo-1547425260-76bcadfb4f2c?q=80&w=800&auto=format&fit=crop" },
-  { id: "p6", name: "三浦 杏花", avatar: "https://images.unsplash.com/photo-1544006659-f0b21884ce1d?q=80&w=800&auto=format&fit=crop" },
-  { id: "p7", name: "木村 ミサ", avatar: "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=800&auto=format&fit=crop" },
+  { id: "p6", name: "Miura Kyoka", avatar: "https://images.unsplash.com/photo-1544006659-f0b21884ce1d?q=80&w=800&auto=format&fit=crop" },
+  { id: "p7", name: "Kimura Misa", avatar: "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=800&auto=format&fit=crop" },
   { id: "p8", name: "関口 蒼", avatar: "https://images.unsplash.com/photo-1547425260-76bcadfb4f2c?q=80&w=800&auto=format&fit=crop" },
 ];
